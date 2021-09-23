@@ -35,7 +35,6 @@ while [ "$OPTION" != 0 ]; do
             adb uninstall --user 0  com.google.android.gm # google gmail
             adb uninstall --user 0  com.google.android.googlequicksearchbox # google app
             adb uninstall --user 0  com.google.android.calendar # google calendar
-            # adb uninstall --user 0  com.amazon.appmanager # amazon app for some reason beyond, you can't remove/disable this app without root
             printf 'Success, you can safely remove your device now.'
         ;;
         4)

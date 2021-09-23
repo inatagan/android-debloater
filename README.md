@@ -1,5 +1,5 @@
 # android-debloater
-This is a simple bash script to remove system apps of the Stock ROM(Android 10) on the Moto G7 play smartphone, *you do not need ROOT nor an unlocked bootloader*.
+This is a simple **bash script** to remove system apps of the Stock ROM(Android 10) on the Moto G7 play smartphone, *you do not need ROOT nor an unlocked bootloader*.
 
 You can use it for other phones but if you do you will probably want to update the apps being removed to match your needs.
 
@@ -35,6 +35,7 @@ To run the script use the command:
 * google drive (com.google.android.apps.docs)
 * google chrome (com.android.chrome)
 * google gmail (com.google.android.gm)
+* google calendar (com.google.android.calendar)
 * google app (com.google.android.googlequicksearchbox)
 
 ### What are the optional apps?
@@ -44,3 +45,4 @@ To run the script use the command:
 * moto feedback app (com.motorola.help)
 * moto time and weather homescreen widget (com.motorola.timeweatherwidget)
 * moto gesture navigation tutorial, that annoying notification (com.motorola.gesture)
+* moto device help (com.motorola.genie)
