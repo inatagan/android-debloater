@@ -1,4 +1,14 @@
 # android-debloater
+This is a simple bash script to remove system apps of the Stock ROM(Android 10) on the Moto G7 play smartphone, *you do not need ROOT nor an unlocked bootloader*.
+
+You can use it for other phones but if you do you will probably want to update the apps being removed to match your needs.
+
+You can use on your phone the [App Inspector](https://play.google.com/store/apps/details?id=com.ubqsoft.sec01) to find out the package name of the app you want to uninstall.
+
+### Dependencies
+* [Android Plataform Tools](https://developer.android.com/studio/releases/platform-tools)
+
+    This script uses ADB to remove apps
 
 ### Change Permissions
 On the same directory that the script is, run the command:
@@ -18,7 +28,6 @@ To run the script use the command:
 * google music app (com.google.android.music) 
 * google youtube system app (com.google.android.youtube)
 * google playvideos (com.google.android.videos)
-* google default SMS messaging app (com.google.android.apps.messaging)
 * google photos (com.google.android.apps.photos)
 * google maps (com.google.android.apps.maps) 
 * google duo (com.google.android.apps.tachyon)
@@ -27,3 +36,11 @@ To run the script use the command:
 * google chrome (com.android.chrome)
 * google gmail (com.google.android.gm)
 * google app (com.google.android.googlequicksearchbox)
+
+### What are the optional apps?
+* google default SMS messaging app (com.google.android.apps.messaging) | Use signal instead.
+* google well being (com.google.android.apps.wellbeing)
+* demo mode app (com.motorola.demo)
+* moto feedback app (com.motorola.help)
+* moto time and weather homescreen widget (com.motorola.timeweatherwidget)
+* moto gesture navigation tutorial, that annoying notification (com.motorola.gesture)
