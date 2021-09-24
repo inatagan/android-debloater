@@ -1,5 +1,5 @@
 #!/bin/bash
-while [ "$OPTION" != 0 ]; do
+while [ "$OPTION" != 5 ]; do
     printf '\nWelcome to the simple android debloater\n'
     printf '*%.0s' {1..22}
     printf '\n Select an option:\n'
