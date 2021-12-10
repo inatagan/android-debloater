@@ -31,10 +31,15 @@ while [ "$OPTION" != 5 ]; do
             adb uninstall --user 0  com.google.android.apps.tachyon # google duo
             adb uninstall --user 0  com.google.android.apps.nbu.files # google files
             adb uninstall --user 0  com.google.android.apps.docs # google drive
+            adb uninstall --user 0  com.google.android.apps.docs.editors.sheets # google sheets
+            adb uninstall --user 0  com.google.android.apps.docs.editors.slides # google slides
             adb uninstall --user 0  com.android.chrome # google chrome
             adb uninstall --user 0  com.google.android.gm # google gmail
             adb uninstall --user 0  com.google.android.googlequicksearchbox # google app
             adb uninstall --user 0  com.google.android.calendar # google calendar
+            adb uninstall --user 0  com.motorola.brapps
+            adb uninstall --user 0  com.microsoft.office.outlook # microsoft outlook
+            adb uninstall --user 0  com.linkedin.android # linkedin
             printf 'Success, you can safely remove your device now.'
         ;;
         4)
