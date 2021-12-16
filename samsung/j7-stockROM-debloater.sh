@@ -74,7 +74,10 @@ while [ "$OPTION" != 5 ]; do
             adb uninstall --user 0  com.sec.android.app.samsungapps # galaxy store
             adb uninstall --user 0  com.sec.android.app.billing # samsung checkout
             adb uninstall --user 0  com.sec.android.app.shealth # samsung health
+            adb uninstall --user 0  com.sec.android.app.voicenote # voice recorder
+            adb uninstall --user 0  com.sec.android.app.myfiles # my files
             adb uninstall --user 0  com.sec.android.easyMover.Agent # agente smart switch
+            adb uninstall --user 0  com.sec.android.usermanual # usermanual
             adb uninstall --user 0  com.opera.max.oem # samsung max vpn
             adb uninstall --user 0  com.samsung.android.game.gamehome # game launcher
             adb uninstall --user 0  com.samsung.android.game.gametools # game tools
