@@ -46,3 +46,8 @@ To run the script use the command:
 * moto time and weather homescreen widget (com.motorola.timeweatherwidget)
 * moto gesture navigation tutorial, that annoying notification (com.motorola.gesture)
 * moto device help (com.motorola.genie)
+
+---
+
+### Samsung J7 pro (sm-j730xx)
+* added script to remove samsung devices stock ROM bloat
