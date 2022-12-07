@@ -23,6 +23,8 @@ while [ "$OPTION" != 5 ]; do
             adb uninstall --user 0  com.facebook.appmanager # facebook related services
             adb uninstall --user 0  com.facebook.services # facebook related services
             adb uninstall --user 0  com.facebook.system # facebook related services
+            adb uninstall --user 0  com.google.android.apps.youtube.music # google music app
+            adb uninstall --user 0  com.google.android.apps.youtube.music.setupwizard # google music app
             adb uninstall --user 0  com.google.android.music # google music app
             adb uninstall --user 0  com.google.android.youtube # google youtube system app
             adb uninstall --user 0  com.google.android.videos # google playvideos
@@ -40,6 +42,7 @@ while [ "$OPTION" != 5 ]; do
             adb uninstall --user 0  com.motorola.brapps
             adb uninstall --user 0  com.microsoft.office.outlook # microsoft outlook
             adb uninstall --user 0  com.linkedin.android # linkedin
+            adb uninstall --user 0  com.motorola.ccc.notification # hello you
             printf 'Success, you can safely remove your device now.'
         ;;
         4)
