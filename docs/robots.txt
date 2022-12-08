@@ -1,5 +1,0 @@
-User-agent: *
-
-Disallow: /norobots/
-
-Sitemap: https://inatagan.github.io/android-debloater//sitemap.xml
