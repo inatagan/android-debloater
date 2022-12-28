@@ -47,6 +47,7 @@ while [ "$OPTION" != 5 ]; do
             adb uninstall --user 0  com.google.android.apps.podcasts # google podcast
             adb uninstall --user 0  com.google.android.apps.magazines # google news
             adb uninstall --user 0  com.google.android.apps.walletnfcrel # google wallet
+            adb uninstall --user 0  com.google.ar.core # play services for AR
             # MICROSOFT BLOAT
             adb uninstall --user 0  com.microsoft.office.outlook # microsoft outlook
             adb uninstall --user 0  com.microsoft.office.word # microsoft outlook
@@ -87,12 +88,14 @@ while [ "$OPTION" != 5 ]; do
             adb uninstall --user 0  com.sec.android.app.myfiles # my files
             adb uninstall --user 0  com.sec.android.easyMover.Agent # agente smart switch
             adb uninstall --user 0  com.sec.android.usermanual # usermanual
+            adb uninstall --user 0  com.sec.android.dictionary # dictionary
             adb uninstall --user 0  com.opera.max.oem # samsung max vpn
             adb uninstall --user 0  com.samsung.android.game.gamehome # game launcher
             adb uninstall --user 0  com.samsung.android.game.gametools # game tools
             adb uninstall --user 0  br.org.sidi.appsbrasil # appsbrasil
             adb uninstall --user 0  de.axelspringer.yana.zeropage # upday
             adb uninstall --user 0  com.wsomacp # mensagem de configuracao
+            adb uninstall --user 0  com.samsung.android.uds # ultra data saving
             # XIAOMI BLOAT
             adb uninstall --user 0  com.zhiliaoapp.musically # tiktok
             adb uninstall --user 0  com.amazon.mp3 # amazon music
