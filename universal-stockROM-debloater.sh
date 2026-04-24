@@ -7,7 +7,9 @@ while [ "$OPTION" != 5 ]; do
     printf '\n 2 - List all apps installed'
     printf '\n 3 - Uninstall pre-selected system apps'
     printf '\n 4 - Uninstall pre-selected optional apps, you may want to keep these.'
-    printf '\n 5 - Exit\n'
+    printf '\n 5 - Install Fdroid'
+    printf '\n 6 - Exit\n'
+    
     read -r OPTION
     case $OPTION in
         1)
@@ -48,6 +50,9 @@ while [ "$OPTION" != 5 ]; do
             adb uninstall --user 0  com.google.android.apps.magazines # google news
             adb uninstall --user 0  com.google.android.apps.walletnfcrel # google wallet
             adb uninstall --user 0  com.google.ar.core # play services for AR
+            adb uninstall --user 0  com.google.android.apps.googleassistant # assistant
+            adb uninstall --user 0  com.google.android.partnersetup # ads
+            adb uninstall --user 0  com.android.providers.partnerbookmarks # ads
             # MICROSOFT BLOAT
             adb uninstall --user 0  com.microsoft.office.outlook # microsoft outlook
             adb uninstall --user 0  com.microsoft.office.word # microsoft outlook
@@ -59,6 +64,16 @@ while [ "$OPTION" != 5 ]; do
             # MOTOROLA BLOAT
             adb uninstall --user 0  com.motorola.brapps
             adb uninstall --user 0  com.motorola.ccc.notification # hello you
+            adb uninstall --user 0  android.autoinstalls.config.motorola.layout # autoinstall apps notification
+            adb uninstall --user 0  com.motorola.moto # moto app
+            adb uninstall --user 0  com.motorola.motocit # cqa test app
+            adb uninstall --user 0  com.motorola.appforecast # cqa test app
+            adb uninstall --user 0  com.motorola.demo # demo mode app
+            adb uninstall --user 0  com.motorola.gamemode # demo mode app
+            adb uninstall --user 0  com.motorola.help # moto feedback app
+            adb uninstall --user 0  com.motorola.timeweatherwidget # moto time and weather homescreen widget
+            adb uninstall --user 0  com.motorola.gesture # moto gesture navigation tutorial(that annoying notification)
+            adb uninstall --user 0  com.motorola.genie # moto device help
             # SAMSUNG BLOAT
             adb uninstall --user 0  com.osp.app.signin # samsung account
             adb uninstall --user 0  com.samsung.android.oneconnect # smartthings
@@ -193,12 +208,20 @@ while [ "$OPTION" != 5 ]; do
             adb uninstall --user 0  com.sec.android.widgetapp.samsungapps # galaxy essentials widget
             adb uninstall --user 0  com.samsung.android.game.gos # game optimizing service
             # motorola
-            adb uninstall --user 0  com.motorola.demo # demo mode app
-            adb uninstall --user 0  com.motorola.help # moto feedback app
-            adb uninstall --user 0  com.motorola.timeweatherwidget # moto time and weather homescreen widget
-            adb uninstall --user 0  com.motorola.gesture # moto gesture navigation tutorial(that annoying notification)
-            adb uninstall --user 0  com.motorola.genie # moto device help
+            
             printf 'Success, you can safely remove your device now.'
+        ;;
+        5)
+            echo "Fdroid install"
+            if adb shell pm list packages | grep -q org.fdroid.fdroid
+            then
+                echo 'F-Droid already installed, skipping.'
+            else
+                echo 'Installing F-Droid.'
+                curl -o ~/F-Droid.apk https://f-droid.org/F-Droid.apk
+                adb install ~/F-Droid.apk
+                rm ~/F-Droid.apk
+            fi
         ;;
         *)
             echo "Bye bye"
