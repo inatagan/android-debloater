@@ -7,8 +7,10 @@ while [ "$OPTION" != 5 ]; do
     printf '\n 2 - List all apps installed'
     printf '\n 3 - Uninstall pre-selected system apps'
     printf '\n 4 - Uninstall pre-selected optional apps, you may want to keep these.'
-    printf '\n 5 - Install Fdroid'
-    printf '\n 6 - Exit\n'
+    printf '\n 5 - Experimental list'
+    printf '\n 6 - Install Fdroid'
+    printf '\n 7 - Remove playstore'
+    printf '\n 8 - Exit\n'
     
     read -r OPTION
     case $OPTION in
@@ -111,6 +113,15 @@ while [ "$OPTION" != 5 ]; do
             adb uninstall --user 0  de.axelspringer.yana.zeropage # upday
             adb uninstall --user 0  com.wsomacp # mensagem de configuracao
             adb uninstall --user 0  com.samsung.android.uds # ultra data saving
+            adb uninstall --user 0  com.samsung.shop
+            adb uninstall --user 0  com.samsung.android.galaxy
+            adb uninstall --user 0  com.samsung.android.arzone
+            adb uninstall --user 0  com.samsung.sree
+            adb uninstall --user 0  com.samsung.android.app.watchmanager
+            adb uninstall --user 0  com.samsung.android.app.spage
+            adb uninstall --user 0  com.applovin.array.apphub.samsung
+            adb uninstall --user 0  com.microsoft.office.officehubrow
+            adb uninstall --user 0  com.rsupport.rs.activity.rsupport.aas2 # smart tutor
             # XIAOMI BLOAT
             adb uninstall --user 0  com.zhiliaoapp.musically # tiktok
             adb uninstall --user 0  com.amazon.mp3 # amazon music
@@ -196,6 +207,12 @@ while [ "$OPTION" != 5 ]; do
             adb uninstall --user 0  com.xiaomi.discover
             adb uninstall --user 0  com.mipay.wallet.in
             adb uninstall --user 0  com.miui.fmservice
+            adb uninstall --user 0  com.kwai.video
+            adb uninstall --user 0  com.amazon.appmanager
+            adb uninstall --user 0  com.google.android.apps.fitness
+            adb uninstall --user 0  com.google.android.apps.chromecast.app
+            adb uninstall --user 0  com.google.android.apps.docs.editors.docs
+            adb uninstall --user 0  com.booking
             # EOF
             printf 'Success, you can safely remove your device now.'
         ;;
@@ -212,6 +229,133 @@ while [ "$OPTION" != 5 ]; do
             printf 'Success, you can safely remove your device now.'
         ;;
         5)
+            echo "Uninstalling optional apps:"
+            
+            # Remove vendor bloat
+            for pkg in $(adb shell pm list packages | grep -iE 'com.motorola|com.facebook|com.tmobile|com.dish|android.apps|linkedin|snapchat|tiktok|com.aura|\.installer$|com.metro|in.playsimple|metropcs|com.android.chrome|com.ironsrc|com.amazon.appmanager|com.particlenews|com.swish|youtube|com.tripledot|com.vivo|com.thehomedepot|.folder|com.booking' | grep -viE 'com.motorola.android.providers.settings|faceunlock' | cut -d':' -f2)
+            do
+                echo "Uninstalling: $pkg"
+                adb shell pm uninstall -k --user 0 $pkg
+            done
+
+            # Remove play store
+            #echo 'Removing Google Play store'
+            #adb shell pm uninstall -k --user 0 com.android.vending
+
+            # Other specific apps (in case the above list missed anything)
+            adb shell pm uninstall -k --user 0 com.motorola.android.fmradio
+            adb shell pm uninstall -k --user 0 com.motorola.fmplayer
+            adb shell pm uninstall -k --user 0 com.motorola.genie
+            adb shell pm uninstall -k --user 0 com.motorola.moto
+            adb shell pm uninstall -k --user 0 com.motorola.launcher3
+            adb shell pm uninstall -k --user 0 com.motorola.gamemode
+            adb shell pm uninstall -k --user 0 com.motorola.demo
+            adb shell pm uninstall -k --user 0 com.motorola.help
+            adb shell pm uninstall -k --user 0 com.motorola.paks
+            adb shell pm uninstall -k --user 0 com.motorola.screenshoteditor
+            adb shell pm uninstall -k --user 0 com.motorola.hiddenmenuapp
+            adb shell pm uninstall -k --user 0 com.motorola.demo.env
+            adb shell pm uninstall -k --user 0 com.motorola.appforecast
+            adb shell pm uninstall -k --user 0 com.lmi.motorola.rescuesecurity
+            adb shell pm uninstall -k --user 0 com.motorola.bug2go
+            adb shell pm uninstall -k --user 0 com.motorola.motocare.internal
+            adb shell pm uninstall -k --user 0 com.motorola.motocare
+            adb shell pm uninstall -k --user 0 com.motorola.android.nativedropboxagent
+            adb shell pm uninstall -k --user 0 com.motorola.brapps
+            adb shell pm uninstall -k --user 0 com.motorola.easyprefix
+            adb shell pm uninstall -k --user 0 com.facebook.katana
+            adb shell pm uninstall -k --user 0 com.facebook.appmanager
+            adb shell pm uninstall -k --user 0 com.facebook.services
+            adb shell pm uninstall -k --user 0 com.facebook.system
+            adb shell pm uninstall -k --user 0 com.android.chrome
+            adb shell pm uninstall -k --user 0 com.android.hotwordenrollment.google
+            adb shell pm uninstall -k --user 0 com.android.stk
+            adb shell pm uninstall -k --user 0 com.google.android.apps.docs
+            adb shell pm uninstall -k --user 0 com.google.android.apps.googleassistant
+            adb shell pm uninstall -k --user 0 com.google.android.apps.magazines
+            adb shell pm uninstall -k --user 0 com.google.android.apps.maps
+            adb shell pm uninstall -k --user 0 com.google.android.apps.photos
+            adb shell pm uninstall -k --user 0 com.google.android.apps.podcasts
+            adb shell pm uninstall -k --user 0 com.google.android.apps.subscriptions.red
+            adb shell pm uninstall -k --user 0 com.google.android.apps.tachyon
+            adb shell pm uninstall -k --user 0 com.google.android.apps.walletnfcrel
+            adb shell pm uninstall -k --user 0 com.google.android.googlequicksearchbox
+            adb shell pm uninstall -k --user 0 com.google.android.gm
+            adb shell pm uninstall -k --user 0 com.google.android.setupwizard
+            adb shell pm uninstall -k --user 0 com.google.android.videos
+            adb shell pm uninstall -k --user 0 com.google.android.youtube
+            adb shell pm uninstall -k --user 0 org.mipay.android.manager
+            adb shell pm uninstall -k --user 0 com.google.android.apps.youtube.music
+            adb shell pm uninstall -k --user 0 com.android.egg
+            adb shell pm uninstall -k --user 0 com.android.providers.partnerbookmarks
+            adb shell pm uninstall -k --user 0 com.android.bookmarkprovider
+            adb shell pm uninstall -k --user 0 com.kwai.kuaishou.video.live
+            adb shell pm uninstall -k --user 0 com.netflix.mediaclient
+            adb shell pm uninstall -k --user 0 com.tencent.igxiaomi
+            adb shell pm uninstall -k --user 0 com.spotify.music
+            adb shell pm uninstall -k --user 0 cn.wps.xiaomi.abroad.lite
+            adb shell pm uninstall -k --user 0 wps.moffice_eng
+            adb shell pm uninstall -k --user 0 cn.wps.moffice_eng
+            adb shell pm uninstall -k --user 0 com.android.stk
+            adb shell pm uninstall -k --user 0 com.csdroid.spkg
+            adb shell pm uninstall -k --user 0 com.zhiliaoapp.musically
+            adb shell pm uninstall -k --user 0 com.king.candycrushsaga
+            adb shell pm uninstall -k --user 0 com.miui.securitycenter
+            adb shell pm uninstall -k --user 0 com.miui.guardprovider
+            adb shell pm uninstall -k --user 0 com.miui.securitycore
+            adb shell pm uninstall -k --user 0 com.miui.cleaner
+            adb shell pm uninstall -k --user 0 com.samsung.knox.appsupdateagent
+            adb shell pm uninstall -k --user 0 com.sec.knox.foldercontainer
+            adb shell pm uninstall -k --user 0 com.sec.knox.knoxsetupwizardclient
+            adb shell pm uninstall -k --user 0 com.sec.knox.kss
+            adb shell pm uninstall -k --user 0 com.sec.knox.switcher
+            adb shell pm uninstall -k --user 0 com.samsung.knox.securefolder
+            adb shell pm uninstall -k --user 0 com.samsung.knox.securefolder.setuppage
+            adb shell pm uninstall -k --user 0 com.miui.fm
+            adb shell pm uninstall -k --user 0 com.miui.fmservice
+            adb shell pm uninstall -k --user 0 com.android.thememanager
+            adb shell pm uninstall -k --user 0 com.miui.player
+            adb shell pm uninstall -k --user 0 com.xiaomi.micloud.sdk
+            adb shell pm uninstall -k --user 0 com.miui.micloudsync
+            adb shell pm uninstall -k --user 0 com.miui.cloudbackup
+            adb shell pm uninstall -k --user 0 com.miui.cloudservice
+            adb shell pm uninstall -k --user 0 com.xiaomi.payment4
+            adb shell pm uninstall -k --user 0 com.xiaomi.account
+            adb shell pm uninstall -k --user 0 com.xiaomi.midrop
+            adb shell pm uninstall -k --user 0 com.vcast.mediamanager
+            adb shell pm uninstall -k --user 0 asurion.android.verizon.vms
+            adb shell pm uninstall -k --user 0 com.motricity.verizon.ssodownloadable
+            adb shell pm uninstall -k --user 0 com.vzw.hss.myverizon
+            adb shell pm uninstall -k --user 0 vzw.hss.myverizon
+            adb shell pm uninstall -k --user 0 com.vzw.hs.android.modlite
+            adb shell pm uninstall -k --user 0 motricity.verizon.ssodownloadable
+            adb shell pm uninstall -k --user 0 us.com.dt.iq.appsource.tmobile
+            adb shell pm uninstall -k --user 0 com.mobitv.client.tmobiletvhd
+            adb shell pm uninstall -k --user 0 com.tmobile.pr.mytmobile
+            adb shell pm uninstall -k --user 0 com.tmobile.m1
+            adb shell pm uninstall -k --user 0 com.tmobile.pr.adapt
+            adb shell pm uninstall -k --user 0 com.tmobile.rsuadapter.qualcomm
+            adb shell pm uninstall -k --user 0 com.tmobile.rsuapp
+            adb shell pm uninstall -k --user 0 com.tmobile.rsusrv
+            adb shell pm uninstall -k --user 0 att.dh
+            adb shell pm uninstall -k --user 0 att.dtv.shaderemote
+            adb shell pm uninstall -k --user 0 att.tv
+            adb shell pm uninstall -k --user 0 att.myWireless
+            adb shell pm uninstall -k --user 0 asurion.android.protech.att
+            adb shell pm uninstall -k --user 0 att.android.attsmartwifi
+            adb shell pm uninstall -k --user 0 com.att.thanks
+            adb shell pm uninstall -k --user 0 com.att.mobilesecurity
+            adb shell pm uninstall -k --user 0 com.att.callprotect
+            adb shell pm uninstall -k --user 0 com.att.iqi
+            adb shell pm uninstall -k --user 0 com.dti.att
+            adb shell pm uninstall -k --user 0 com.sprint.ms.cdm
+            adb shell pm uninstall -k --user 0 com.sprint.ms.smf.services
+            adb shell pm uninstall -k --user 0 com.sprint.ce.updater
+            adb shell pm uninstall -k --user 0 com.sprint.w.installer
+            
+            printf 'Success, you can safely remove your device now.'
+        ;;
+        6)
             echo "Fdroid install"
             if adb shell pm list packages | grep -q org.fdroid.fdroid
             then
@@ -222,6 +366,11 @@ while [ "$OPTION" != 5 ]; do
                 adb install ~/F-Droid.apk
                 rm ~/F-Droid.apk
             fi
+        ;;
+        7)
+            echo "Removing playstore"
+            adb shell pm uninstall -k --user 0 com.android.vending            
+            printf 'Success, you can safely remove your device now.'
         ;;
         *)
             echo "Bye bye"
