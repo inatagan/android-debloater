@@ -1,5 +1,5 @@
 #!/bin/bash
-while [ "$OPTION" != 5 ]; do
+while [ "$OPTION" != 8 ]; do
     printf '\nWelcome to the simple android debloater\n'
     printf '*%.0s' {1..22}
     printf '\n Select an option:\n'
@@ -119,6 +119,23 @@ while [ "$OPTION" != 5 ]; do
             adb uninstall --user 0  com.samsung.sree
             adb uninstall --user 0  com.samsung.android.app.watchmanager
             adb uninstall --user 0  com.samsung.android.app.spage
+            adb uninstall --user 0  com.samsung.android.app.reminder
+            adb uninstall --user 0  com.samsung.android.app.newtrim
+            adb uninstall --user 0  com.samsung.android.app.parentalcare
+            adb uninstall --user 0  com.samsung.android.mapsagent
+            adb uninstall --user 0  com.samsung.android.app.watchmanagerstub
+            adb uninstall --user 0  com.samsung.android.sm.devicesecurity
+            adb uninstall --user 0  com.sec.android.easyMover
+            adb uninstall --user 0  com.samsung.android.calendar
+            adb uninstall --user 0  com.spotify.music
+            adb uninstall --user 0  com.odete.samsung # samsung itaucard
+            adb uninstall --user 0  com.google.android.adservicesapi
+            adb uninstall --user 0  com.google.android.healthconnect.controller
+            adb uninstall --user 0  com.sidia.suframa.notification
+            adb uninstall --user 0  com.google.android.apps.bard # gemini
+            adb uninstall --user 0  com.google.android.apps.restore
+            adb uninstall --user 0  com.google.android.gms.supervision
+            adb uninstall --user 0  com.sec.android.app.kidshome # samsung kids
             adb uninstall --user 0  com.applovin.array.apphub.samsung
             adb uninstall --user 0  com.microsoft.office.officehubrow
             adb uninstall --user 0  com.rsupport.rs.activity.rsupport.aas2 # smart tutor
@@ -237,10 +254,6 @@ while [ "$OPTION" != 5 ]; do
                 echo "Uninstalling: $pkg"
                 adb shell pm uninstall -k --user 0 $pkg
             done
-
-            # Remove play store
-            #echo 'Removing Google Play store'
-            #adb shell pm uninstall -k --user 0 com.android.vending
 
             # Other specific apps (in case the above list missed anything)
             adb shell pm uninstall -k --user 0 com.motorola.android.fmradio
