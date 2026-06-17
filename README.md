@@ -1,5 +1,9 @@
+![Bash Script](https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+
 # android-debloater
-This is a simple **bash script** to remove system apps of the Stock ROM of several Android devices, *you do not need ROOT nor an unlocked bootloader*.
+
+This is my own curated list tha I use for my devices, it is a simple **bash script** to remove system apps of the Stock ROM of several Android devices, *you do not need ROOT nor an unlocked bootloader*.
 
 Currently this list is targeting most common Bloatware found on Motorola, Samsung and Xiaomi* devices.
 

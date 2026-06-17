@@ -9,8 +9,9 @@ while [ "$OPTION" != 8 ]; do
     printf '\n 4 - Uninstall pre-selected optional apps, you may want to keep these.'
     printf '\n 5 - Experimental list'
     printf '\n 6 - Install Fdroid'
-    printf '\n 7 - Remove playstore'
-    printf '\n 8 - Exit\n'
+    printf '\n 7 - Install Aurora Store'
+    printf '\n 8 - Remove playstore'
+    printf '\n 9 - Exit\n'
     
     read -r OPTION
     case $OPTION in
@@ -120,22 +121,27 @@ while [ "$OPTION" != 8 ]; do
             adb uninstall --user 0  com.samsung.android.app.watchmanager
             adb uninstall --user 0  com.samsung.android.app.spage
             adb uninstall --user 0  com.samsung.android.app.reminder
-            adb uninstall --user 0  com.samsung.android.app.newtrim
             adb uninstall --user 0  com.samsung.android.app.parentalcare
             adb uninstall --user 0  com.samsung.android.mapsagent
             adb uninstall --user 0  com.samsung.android.app.watchmanagerstub
             adb uninstall --user 0  com.samsung.android.sm.devicesecurity
+            adb uninstall --user 0  com.samsung.android.service.stplatform # smartthings companion
             adb uninstall --user 0  com.sec.android.easyMover
             adb uninstall --user 0  com.samsung.android.calendar
+            adb uninstall --user 0  com.samsung.android.app.updatecenter
+            adb uninstall --user 0  com.samsung.android.mydevice # samsung members
+            adb uninstall --user 0  com.samsung.android.app.omcagent # recommended apps notification
+            adb shell pm disable-user --user 0 com.samsung.android.app.omcagent
             adb uninstall --user 0  com.spotify.music
             adb uninstall --user 0  com.odete.samsung # samsung itaucard
-            adb uninstall --user 0  com.google.android.adservicesapi
+            adb uninstall --user 0  com.google.android.adservices.api
             adb uninstall --user 0  com.google.android.healthconnect.controller
             adb uninstall --user 0  com.sidia.suframa.notification
             adb uninstall --user 0  com.google.android.apps.bard # gemini
             adb uninstall --user 0  com.google.android.apps.restore
             adb uninstall --user 0  com.google.android.gms.supervision
             adb uninstall --user 0  com.sec.android.app.kidshome # samsung kids
+            adb uninstall --user 0  com.sec.android.daemonapp # Clima app
             adb uninstall --user 0  com.applovin.array.apphub.samsung
             adb uninstall --user 0  com.microsoft.office.officehubrow
             adb uninstall --user 0  com.rsupport.rs.activity.rsupport.aas2 # smart tutor
@@ -241,6 +247,7 @@ while [ "$OPTION" != 8 ]; do
             adb uninstall --user 0  com.samsung.android.app.aodservice # always on display
             adb uninstall --user 0  com.sec.android.widgetapp.samsungapps # galaxy essentials widget
             adb uninstall --user 0  com.samsung.android.game.gos # game optimizing service
+            adb uninstall --user 0  com.samsung.android.app.newtrim # video editor
             # motorola
             
             printf 'Success, you can safely remove your device now.'
@@ -381,6 +388,19 @@ while [ "$OPTION" != 8 ]; do
             fi
         ;;
         7)
+            echo "Aurora Store install"
+            if adb shell pm list packages | grep -q com.aurora.store
+            then
+                echo 'Aurora Store already installed, skipping.'
+            else
+                echo 'Installing Aurora Store.'
+                # Using the official GitLab releases URL for Aurora Store
+                curl -L -o ~/AuroraStore.apk "https://gitlab.com/AuroraOSS/AuroraStore/-/jobs/artifacts/master/raw/app/build/outputs/apk/release/app-release.apk?job=assembleRelease"
+                adb install ~/AuroraStore.apk
+                rm ~/AuroraStore.apk
+            fi
+        ;;
+        8)
             echo "Removing playstore"
             adb shell pm uninstall -k --user 0 com.android.vending            
             printf 'Success, you can safely remove your device now.'
